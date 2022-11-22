@@ -1,0 +1,70 @@
+<style type="text/css">svg{
+height:400px;
+width:400px;
+/*background-image: repeating-linear-gradient(45deg, #173459, #903C56 15%, #78969D 20%);
+*/background:fuchsia;}
+button {
+margin:29px;
+font-size:30px;
+padding:20px;
+border-radius:3%;
+}
+body{-webkit-user-select:none;}
+</style>
+<meta name="viewport" content="width=device-width" >
+<body>
+score:<span id="s" ></span>
+<svg>
+<circle id="a"  fill="blue"/>
+<rect id="b"x="200"y="390"width="70"height="50"fill="yellow"/>
+</svg>
+<center><button onclick="lf()">Left</button><button onclick="rf()">Right</button>
+</center>
+<script type="text/javascript">
+a=document.getElementById("a");
+b=document.getElementById("b");
+x=100*Math.random();y=0;p=10;q=7;
+r=20;s=0;i=70;
+scr=0;scrp=50
+function fn(){
+a.setAttribute("cx",x);
+a.setAttribute("cy",y);
+a.setAttribute("r",r);
+if(x>400||x<0){
+p=-p;
+}
+if(y>391||y<0){
+q=-q;
+}
+if(y==392){
+scr+=scrp;
+document.getElementById("s").innerHTML=scr;
+if(Math.abs(x-m)>70){
+clearInterval(iid);i=70
+}
+if(scr%200==0){
+clearInterval(iid);
+i-=30;
+iid=setInterval(fn,i);
+}
+}
+x+=p;
+y+=q;
+r+=0;
+}
+iid=setInterval(fn,70);
+m=200;
+n=50;
+function lf(){
+m-=n;
+b.setAttribute("x",m);
+
+}
+function rf(){
+m+=n;
+b.setAttribute("x",m);
+}
+
+
+</script>
+</body>
